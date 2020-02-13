@@ -11,6 +11,7 @@ namespace BeatSaberList
             string list;
             int playerCount = 0;
             string finished;
+            int nextPlayer = 0;
 
             Console.WriteLine("Please Enter The Players Playing Today");
             players[0] = Console.ReadLine();
@@ -58,7 +59,6 @@ namespace BeatSaberList
                     case "Yes":
                         {
                             Console.WriteLine(string.Join(" , ", players));
-                            Console.Read();
                             Turn();
                         }
                         break;
@@ -73,12 +73,26 @@ namespace BeatSaberList
 
             void Turn()
             {
-                Console.WriteLine($"Player {players[0]} is up!");
+                Console.WriteLine($"Player {players[nextPlayer]} is up!");
                 Console.WriteLine("Is This Player Finished?");
                 finished = Console.ReadLine();
+
+                switch (finished)
+                {
+                    case "Yes":
+                        {
+                            nextPlayer++;
+                            Turn();
+                        }
+                        break;
+                }
             }
 
-            Console.Read();
+            void EndOfProgram()
+            {
+                Console.WriteLine("This Program Is Finished, Have Fun Gamers!" + "\n" + "Press Any Key To Close Application" );
+                Console.Read();
+            }
         }
             
     }
