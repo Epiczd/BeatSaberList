@@ -10,6 +10,8 @@ namespace BeatSaberList
             string morePlayers;
             string list;
             int playerCount = 0;
+            string finished;
+
             Console.WriteLine("Please Enter The Players Playing Today");
             players[0] = Console.ReadLine();
             playerCount++;
@@ -55,10 +57,25 @@ namespace BeatSaberList
                 {
                     case "Yes":
                         {
-                            Console.WriteLine(players);
+                            Console.WriteLine(string.Join(" , ", players));
+                            Console.Read();
+                            Turn();
+                        }
+                        break;
+                    case "No":
+                        {
+                            Turn(); 
                         }
                         break;
                 }
+
+            }
+
+            void Turn()
+            {
+                Console.WriteLine($"Player {players[0]} is up!");
+                Console.WriteLine("Is This Player Finished?");
+                finished = Console.ReadLine();
             }
 
             Console.Read();
