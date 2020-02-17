@@ -6,14 +6,7 @@ namespace BeatSaberListUpdated
 {
     class BeatSaberList
     {
-        //No Code, just instructions (Collapse This if you don't need it open)
-        void Instructions()
-        {
-            /* Instructions are pretty simple, just respond to any questions asked by the program.
-             * If you are prompted with a "Yes or No" question, please only respond with either,
-             * Capital Y Yes, or Capital N No, if it is anything else, or not captial, the program will break.
-             */
-        }
+        //Just follow the instructions on screen
 
         //MainMethod
         static void Main(string[] args)
@@ -26,7 +19,7 @@ namespace BeatSaberListUpdated
             int nextPlayer = 0;
 
             //Asks for the number of players
-            Console.WriteLine("Please Enter The Number of Players Playing Today");
+            Console.WriteLine("Please Enter The Number of Players Playing Today (Number Only)");
 
             //Saves the number of players entered into the array
             int numOfPlayers = Convert.ToInt32(Console.ReadLine());
@@ -75,8 +68,14 @@ namespace BeatSaberListUpdated
                         Console.WriteLine(string.Join(" , ", players));
                     }
                     break;
-                case "No":
+                case "yes":
                     {
+                        Console.WriteLine(string.Join(" , ", players));
+                    }
+                    break;
+                default:
+                    {
+
                     }
                     break;
             }
