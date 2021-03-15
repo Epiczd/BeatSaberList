@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Timers;
 
 namespace BeatSaberListUpdated
 {
     class BeatSaberList
     {
         //Just follow the instructions on screen
+
+        //How much time the player has
+        static Timer playerTime;
 
         //MainMethod
         static void Main(string[] args)
