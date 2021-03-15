@@ -12,6 +12,10 @@ namespace BeatSaberListUpdated
         //How much time the player has
         static Timer playerTime;
 
+        static bool isTurnOver = false;
+
+        static int time;
+
         //MainMethod
         static void Main(string[] args)
         {
@@ -58,10 +62,24 @@ namespace BeatSaberListUpdated
 
             Console.WriteLine("How Long do you Want to Play? (Minutes Please!)");
 
+            //How much time each player has
             int timePerTurn = Convert.ToInt32(Console.ReadLine());
 
-            Console.Write($"{timePerTurn} Minutes Per Turn!");
-            Console.WriteLine("\n");
+            //Converts time to milliseconds
+            time = timePerTurn * 60000;
+            
+            if(timePerTurn == 1)
+            {
+                Console.Write($"{timePerTurn} Minute Per Turn!");
+                Console.WriteLine("\n");
+            }
+            else
+            {
+                Console.Write($"{timePerTurn} Minutes Per Turn!");
+                Console.WriteLine("\n");
+            }
+
+            
             //Asks if the user wants to see a list of all players
             Console.WriteLine("Do You Want To See A List Of All Players? (Yes or No)");
 
@@ -93,12 +111,22 @@ namespace BeatSaberListUpdated
                     Console.WriteLine($"Player {players[nextPlayer]} is up!, Good Luck Gamer {timePerTurn} minutes Remaning...");
                     Console.WriteLine("\n");
 
+                    /*
                     //Asks if the current player is finished
                     Console.WriteLine("Is This Player Finished? (Type Anything When Finished)");
 
                     Console.ReadLine();
+                    */
+
+                    SetTimer();
+                    while (!isTurnOver)
+                    {
+
+                    }
+
                     nextPlayer++;
                     i++;
+                    isTurnOver = false;
                 }
             }
 
@@ -106,6 +134,19 @@ namespace BeatSaberListUpdated
             //Final message before closing the program
             Console.WriteLine("This Program Is Finished, Hope You Had Fun Playing!" + "\n" + "Press Any Key To Close Application");
             Console.Read();
+        }
+
+        static void SetTimer()
+        {
+            playerTime = new Timer(time);
+            playerTime.Elapsed += OnTimedEvent;
+            playerTime.AutoReset = true;
+            playerTime.Enabled = true;
+        }
+
+        static void OnTimedEvent(Object source, ElapsedEventArgs e)
+        {
+            isTurnOver = true;
         }
     }
 }
