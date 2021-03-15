@@ -39,7 +39,7 @@ namespace BeatSaberListUpdated
             {
                 while(i < numOfPlayers)
                 {
-                    Console.WriteLine("Please Enter The Players Playing Today");
+                    Console.WriteLine($"Please Enter The Name of Player {i + 1}/{numOfPlayers}");
 
                     players[playerCount] = Console.ReadLine();
 
@@ -47,6 +47,7 @@ namespace BeatSaberListUpdated
 
                     Console.WriteLine("\n");
                     Console.WriteLine($"Player {playerCount} is {players[playerCount - 1]}");
+                    Console.WriteLine("\n");
                     i++;
                 }
             }
@@ -56,28 +57,15 @@ namespace BeatSaberListUpdated
             Console.WriteLine("Do You Want To See A List Of All Players? (Yes or No)");
 
             //Records the users response
-            list = Console.ReadLine();
+            list = Console.ReadLine().ToLower();
 
             /* If the user responds with "Yes", the program will display a list of players,
              * If the user responds with "No", the program will continue on
              */
-            switch (list)
+            if(list == "yes")
             {
-                case "Yes":
-                    {
-                        Console.WriteLine(string.Join(" , ", players));
-                    }
-                    break;
-                case "yes":
-                    {
-                        Console.WriteLine(string.Join(" , ", players));
-                    }
-                    break;
-                default:
-                    {
-
-                    }
-                    break;
+                Console.WriteLine("\n");
+                Console.WriteLine(string.Join(" , ", players));
             }
 
             /* While the players being displayed is less that the total number of players,
