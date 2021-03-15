@@ -56,6 +56,11 @@ namespace BeatSaberListUpdated
                 }
             }
 
+            Console.WriteLine("How Long do you Want to Play? (Minutes Please!)");
+
+            int timePerTurn = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write($"{timePerTurn} Minutes Per Turn!");
             Console.WriteLine("\n");
             //Asks if the user wants to see a list of all players
             Console.WriteLine("Do You Want To See A List Of All Players? (Yes or No)");
@@ -85,7 +90,7 @@ namespace BeatSaberListUpdated
                 {
                     Console.WriteLine("\n");
                     //Displays which player get's to play
-                    Console.WriteLine($"Player {players[nextPlayer]} is up!, Good Luck Gamer");
+                    Console.WriteLine($"Player {players[nextPlayer]} is up!, Good Luck Gamer {timePerTurn} minutes Remaning...");
                     Console.WriteLine("\n");
 
                     //Asks if the current player is finished
