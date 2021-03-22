@@ -63,19 +63,16 @@ namespace BeatSaberListUpdated
             Console.WriteLine("How Long do you Want to Play? (Minutes Please!)");
 
             //How much time each player has
-            int timePerTurn = Convert.ToInt32(Console.ReadLine());
-
-            //Converts time to milliseconds
-            time = timePerTurn * 60000;
+            time = Convert.ToInt32(Console.ReadLine());
             
-            if(timePerTurn == 1)
+            if(time == 1)
             {
-                Console.Write($"{timePerTurn} Minute Per Turn!");
+                Console.Write($"{time} Minute Per Turn!");
                 Console.WriteLine("\n");
             }
             else
             {
-                Console.Write($"{timePerTurn} Minutes Per Turn!");
+                Console.Write($"{time} Minutes Per Turn!");
                 Console.WriteLine("\n");
             }
 
@@ -113,13 +110,13 @@ namespace BeatSaberListUpdated
                     Console.ReadLine();
 
                     //Displays which player get's to play
-                    Console.WriteLine($"Player {players[nextPlayer]} is up!, Good Luck Gamer {timePerTurn} minutes Remaning...");
+                    Console.WriteLine($"Player {players[nextPlayer]} is up!, Good Luck Gamer");
                     Console.WriteLine("\n");
 
                     SetTimer();
                     while (!isTurnOver)
                     {
-
+                        
                     }
 
                     isTurnOver = false;
@@ -141,6 +138,22 @@ namespace BeatSaberListUpdated
             playerTime.Elapsed += OnTimedEvent;
             playerTime.AutoReset = true;
             playerTime.Enabled = true;
+
+            for (int i = 0; i < time; i++)
+            {
+                if(time - i == 1)
+                {
+                    Console.WriteLine($"{time - i} Minute Remaning...");
+                    Console.WriteLine("\n");
+                }
+                else
+                {
+                    Console.WriteLine($"{time - i} Minutes Remaning...");
+                    Console.WriteLine("\n");
+                }
+                
+                System.Threading.Thread.Sleep(60000);
+            }
         }
 
         static void OnTimedEvent(Object source, ElapsedEventArgs e)
