@@ -107,16 +107,14 @@ namespace BeatSaberListUpdated
                 while(i < numOfPlayers)
                 {
                     Console.WriteLine("\n");
+
+                    Console.WriteLine($"Is Player {players[nextPlayer]} Ready? (Type anything to continue)");
+
+                    Console.ReadLine();
+
                     //Displays which player get's to play
                     Console.WriteLine($"Player {players[nextPlayer]} is up!, Good Luck Gamer {timePerTurn} minutes Remaning...");
                     Console.WriteLine("\n");
-
-                    /*
-                    //Asks if the current player is finished
-                    Console.WriteLine("Is This Player Finished? (Type Anything When Finished)");
-
-                    Console.ReadLine();
-                    */
 
                     SetTimer();
                     while (!isTurnOver)
@@ -124,9 +122,10 @@ namespace BeatSaberListUpdated
 
                     }
 
+                    isTurnOver = false;
                     nextPlayer++;
                     i++;
-                    isTurnOver = false;
+     
                 }
             }
 
